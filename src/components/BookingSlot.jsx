@@ -1,5 +1,4 @@
 'use client'
-import { Playwrite_BE_VLG } from 'next/font/google'
 import React, { useState, useEffect } from 'react'
 const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
   const [bookingSlots, setBookingSlots] = useState([

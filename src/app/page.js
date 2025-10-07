@@ -23,14 +23,16 @@ const Home = () => {
           bookignDetails={bookignDetails}
           setBookignDetails={setBookignDetails}
         />
-        <div className='flex justify-center items-center'>
-          <button
-            onClick={handleSubmit}
-            className='bg-emerald-500 p-4 rounded-2xl'
-          >
-            {' '}
-            Enter Details
-          </button>
+        <div className=' '>
+          <div className='flex justify-end'>
+            <button
+              onClick={handleSubmit}
+              className='bg-emerald-500 p-4 rounded-2xl'
+            >
+              {' '}
+              Enter Details
+            </button>
+          </div>
         </div>
       </div>
     </div>

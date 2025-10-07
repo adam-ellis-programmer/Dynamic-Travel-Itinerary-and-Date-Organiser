@@ -48,7 +48,7 @@ export default function AddItinerary({ setBookignDetails, bookignDetails }) {
       <ul className=''>
         {itineraryDays.map((item, i) => {
           return (
-            <li key={i} className=' mb-5 border-b border-dashed pb-'>
+            <li key={i} className=' mb-5 border-b border-dashed pb-10'>
               <p className=' p-3  capitalize'>day number: {item.dayNumber}</p>
               <div>
                 <input
@@ -72,12 +72,14 @@ export default function AddItinerary({ setBookignDetails, bookignDetails }) {
               {/* day description: {item.dayDescription} */}
 
               <div className='flex justify-end'>
-                <button
-                  onClick={() => removeDay(i)}
-                  className='bg-rose-500 p-2 rounded-2xl'
-                >
-                  remove
-                </button>
+                {itineraryDays.length > 1 && (
+                  <button
+                    onClick={() => removeDay(i)}
+                    className='bg-rose-500 p-2 rounded-2xl'
+                  >
+                    remove
+                  </button>
+                )}
               </div>
             </li>
           )
