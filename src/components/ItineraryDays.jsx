@@ -49,7 +49,7 @@ export default function AddItinerary({ setBookignDetails, bookignDetails }) {
         {itineraryDays.map((item, i) => {
           return (
             <li key={i} className=' mb-5 border-b border-dashed pb-10'>
-              <p className=' p-3  capitalize'>day number: {item.dayNumber}</p>
+              <p className=' p-3  capitalize'>day number: {i + 1}</p>
               <div>
                 <input
                   className='border-b w-full text-lg p-2 mb-2'
