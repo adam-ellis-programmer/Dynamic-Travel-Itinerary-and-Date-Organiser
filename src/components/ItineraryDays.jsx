@@ -2,14 +2,19 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
-export default function AddItinerary() {
+export default function AddItinerary({ setBookignDetails, bookignDetails }) {
   const [itineraryDays, setItineraryDays] = useState([
     { dayNumber: 1, dayTitle: '', dayDescription: '' },
   ])
 
   useEffect(() => {
+    setBookignDetails((prevState) => ({
+      ...prevState,
+      itineraryDays,
+    }))
+
     return () => {}
-  }, [])
+  }, [setBookignDetails, itineraryDays])
 
   const addDay = () => {
     console.log('adding day....')
@@ -23,7 +28,7 @@ export default function AddItinerary() {
     console.log('removing day ....')
     setItineraryDays(itineraryDays.filter((item, i) => i !== index))
   }
-  console.log(itineraryDays)
+  // console.log(itineraryDays)
 
   const updateDay = (index, field, value) => {
     const updated = [...itineraryDays] // copy

@@ -7,6 +7,9 @@ const Home = () => {
   const handleSubmit = () => {
     //...
     console.log(bookignDetails)
+    console.log(typeof bookignDetails)
+
+    // bookignDetails.forEach((item) => console.log(item))
   }
   return (
     <div className='w-[90%]  mx-auto'>

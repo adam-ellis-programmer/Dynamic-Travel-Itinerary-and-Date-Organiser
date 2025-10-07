@@ -1,4 +1,5 @@
 'use client'
+import { Playwrite_BE_VLG } from 'next/font/google'
 import React, { useState, useEffect } from 'react'
 const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
   const [bookingSlots, setBookingSlots] = useState([
@@ -6,8 +7,14 @@ const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
   ])
 
   useEffect(() => {
-    return () => {}
-  }, [])
+    return () => {
+      setBookignDetails((prev) => ({
+        ...prev,
+        bookingSlots: bookingSlots,
+      }))
+      // setBookignDetails((prev) => [...prev, bookingSlots])
+    }
+  }, [bookingSlots, setBookignDetails])
 
   // prettier-ignore
   const months = ['January', 'Febuary', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December']
@@ -61,6 +68,25 @@ const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
     //  or do it this way
     setBookingSlots(bookingSlots.filter((_, i) => i !== slotIndex))
   }
+
+  const handleMonthChange = (slotIndex, value) => {
+    // ....
+    const updated = [...bookingSlots]
+    updated[slotIndex].month = value
+    console.log(updated)
+  }
+  const handleYearhChange = (slotIndex, value) => {
+    // ....
+    const updated = [...bookingSlots]
+    updated[slotIndex].year = value
+    setBookignDetails(updated)
+  }
+  const handleBookingNumberChange = (slotIndex, value) => {
+    // ....
+    const updated = [...bookingSlots]
+    updated[slotIndex].year = value
+    setBookignDetails(updated)
+  }
   return (
     <div className=' mb-15'>
       <h3 className='text-center text-4xl capitalize'>Booking Dates entery </h3>
@@ -88,6 +114,9 @@ const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
                       className='border w-[150px] p-2 text-lg mx-1 rounded'
                       name=''
                       id=''
+                      onChange={(e) =>
+                        handleMonthChange(slotIndex, e.target.value)
+                      }
                     >
                       {months.map((month, i) => {
                         return (
@@ -101,6 +130,9 @@ const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
                       className='border w-[150px] p-2 text-lg mx-1 rounded'
                       name=''
                       id=''
+                      onChange={(e) =>
+                        handleYearhChange(slotIndex, e.target.value)
+                      }
                     >
                       {years.map((year, i) => {
                         return (
@@ -116,7 +148,14 @@ const BookingSlot = ({ setBookignDetails, bookignDetails }) => {
                     <p className='text-2xl capitalize'>
                       Number of people per one booking
                     </p>
-                    <select className='border p-1 w-[210px]' name='' id=''>
+                    <select
+                      onChange={(e) =>
+                        handleBookingNumberChange(slotIndex, e.target.value)
+                      }
+                      className='border p-1 w-[210px]'
+                      name=''
+                      id=''
+                    >
                       {[...Array(10)].map((_, i) => (
                         <option key={i} value={i + 1}>
                           {i + 1}
